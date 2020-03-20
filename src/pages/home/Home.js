@@ -47,7 +47,7 @@ export default class Home extends Component {
       case 'history':
         return <History />;
       case 'my':
-        return <My />;
+        return <My history={this.props.history} />;
       default:
         return <Main />;
     }

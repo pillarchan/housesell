@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Grid } from 'antd-mobile';
 import Estates from '../../../components/Estates';
 import { estatesInfo } from '../../../apis/ajax';
+import { addEstateInfoToHistory } from '../../../store/actions';
+import { connect } from 'react-redux';
 import './main.less';
-export default class Main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,6 +58,9 @@ export default class Main extends Component {
       estates: []
     };
   }
+  clickHouse(val) {
+    this.props.dispatch(addEstateInfoToHistory(val));
+  }
   async componentDidMount() {
     const res = await estatesInfo();
     this.setState({
@@ -87,10 +92,13 @@ export default class Main extends Component {
         <div className='guessLike'>
           猜你喜欢
           {this.state.estates.map(obj => (
-            <Estates key={obj.id} {...obj}></Estates>
+            <div onClick={this.clickHouse.bind(this, obj)} key={obj.id}>
+              <Estates {...obj}></Estates>
+            </div>
           ))}
         </div>
       </div>
     );
   }
 }
+export default connect()(Main);

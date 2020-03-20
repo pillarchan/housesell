@@ -10,6 +10,7 @@ export default class Estates extends Component {
     point: 0, //平方面积
     price: 0, //价格
     src: '../assets/imgs/icon_new_house.png' //楼盘图片
+    // click: null //点击房产
   };
   render() {
     let { name, area, range, type, point, price, src } = this.props;

@@ -79,8 +79,11 @@ export default class Login extends Component {
         styles: { color: 'red', display: 'block' }
       });
     } else {
-      localStorage.setItem('userId', res.data._id);
-      this.props.history.push('/');
+      if (!localStorage.user) {
+        localStorage.setItem('user', JSON.stringify({ userId: res.data._id, acc: res.data.acc }));
+        this.props.history.push('/');
+      }
+      //
     }
   }
 }

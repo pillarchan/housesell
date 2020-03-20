@@ -4,3 +4,10 @@ export function changeTest(newVal) {
     newVal
   };
 }
+//添加一条房产信息到历史
+export function addEstateInfoToHistory(houseObj) {
+  return {
+    type: 'addEstateInfoToHistory',
+    houseObj
+  };
+}

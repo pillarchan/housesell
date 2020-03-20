@@ -1,5 +1,5 @@
-//引入合并reducer模块
 import { combineReducers } from 'redux';
+
 function test(state = 'test', action) {
   switch (action.type) {
     case 'changeTest':
@@ -8,7 +8,16 @@ function test(state = 'test', action) {
       return state;
   }
 }
-//导出合并的reducers
+//历史房产信息
+function estateList(state = [], action) {
+  switch (action.type) {
+    case 'addEstateInfoToHistory':
+      return [...new Set([action.houseObj, ...state])];
+    default:
+      return state;
+  }
+}
 export default combineReducers({
-  test
+  test,
+  estateList
 });
