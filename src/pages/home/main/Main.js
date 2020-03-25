@@ -69,7 +69,7 @@ class Main extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='container'>
         <header className='header'>
           <div className='city'>成都市▼</div>
           <div className='search'>

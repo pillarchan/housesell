@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { HashRouter, Switch, Route } from 'react-router-dom';
-import Home from './pages/home/Home';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Nav from './pages/home/Nav';
 import Login from './pages/login/Login';
 import Reg from './pages/reg/Reg';
 import Error404 from './pages/error/Error404';
@@ -13,11 +13,11 @@ export default class App extends Component {
       <Provider store={store}>
         <HashRouter>
           <Switch>
-            <Route path='/' exact component={Home} />
+            <Route path='/index' component={Nav} />
             <Route path='/login' component={Login} />
             <Route path='/reg' component={Reg} />
             <Route path='/my/mypoint' component={Mypoint} />
-
+            <Redirect from='/' to='/index' />
             <Route component={Error404} />
           </Switch>
         </HashRouter>
